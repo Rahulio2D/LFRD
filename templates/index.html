@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site.name }}</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <!-- TODO: Move this to a 'sections' folder and import using something like {{ include sections.header.html }} -->
+    <header>
+        <div class="content-container">
+            <h1><a href="/">{{ site.name }}</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- TODO: Generate this content by using a MD file instead -->
+    <main>
+        <div class="content-container">
+            <h1>Welcome to {{ site.name }}!</h1>
+            <p>This is a blank LFRD website. Feel free to customize it however you'd like!</p>
+        </div>
+    </main>
+
+    <!-- TODO: Move this to a 'sections' folder and import using something like {{ include sections.header.html }}-->
+    <footer>
+        <div class="content-container">
+            <p>Generated with ❤️ using <a href="https://github.com/Rahulio2D/LFRD" target="_blank">LFRD</a></p>
+            <ul class="social-media-links">
+                <li><a href="{{ site.github_url }}" target="_blank"><img src="images/github_icon.webp" alt="GitHub"></a></li>
+                <li><a href="{{ site.x_url}}" target="_blank"><img src="images/x_icon.png" alt="X"></a></li>
+                <li><a href="{{ site.instagram_url}}" target="_blank"><img src="images/instagram_icon.webp" alt="Instagram"></a></li>
+                <li><a href="{{ site.youtube_url}}" target="_blank"><img src="images/youtube_icon.webp" alt="YouTube"></a></li>
+            </ul>
+    </footer>
+    </div>
+</body>
+
+</html>
