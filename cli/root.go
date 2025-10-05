@@ -25,4 +25,5 @@ func init() {
 	rootCommand.AddCommand(installCliCommand)
 	rootCommand.AddCommand(initCliCommand)
 	rootCommand.AddCommand(buildCliCommand)
+	rootCommand.AddCommand(serveCliCommand)
 }
