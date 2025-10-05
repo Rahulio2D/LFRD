@@ -3,6 +3,7 @@ package cli
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 
 	"github.com/Rahulio2D/LFRD/helpers"
 	"github.com/spf13/cobra"
@@ -21,7 +22,13 @@ var initCliCommand = &cobra.Command{
 			return
 		}
 
-		templateDirectory := "templates"
+		homeDirectory, err := os.UserHomeDir()
+		if err != nil {
+			fmt.Println("Error finding home directory:", err)
+			return
+		}
+
+		templateDirectory := filepath.Join(homeDirectory, ".lfrd", "templates")
 		if err := helpers.CopyDir(templateDirectory, projectName); err != nil {
 			fmt.Println("Error copying LFRD templates files:", err)
 			return
