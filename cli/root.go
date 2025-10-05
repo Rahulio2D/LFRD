@@ -22,5 +22,6 @@ func Execute() {
 }
 
 func init() {
+	rootCommand.AddCommand(installCliCommand)
 	rootCommand.AddCommand(initCliCommand)
 }
