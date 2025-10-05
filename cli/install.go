@@ -19,19 +19,29 @@ var installCliCommand = &cobra.Command{
 		}
 
 		lfrdSourceDirectory := args[0]
+		templatesSourceDirectory := filepath.Join(lfrdSourceDirectory, "templates")
 
 		homeDirectory, err := os.UserHomeDir()
 		if err != nil {
 			fmt.Println("Error finding home directory:", err)
 			return
 		}
+		targetDirectory := filepath.Join(homeDirectory, ".lfrd", "templates")
 
-		templateDirectory := filepath.Join(homeDirectory, ".lfrd", "templates")
-		if err := helpers.CopyDir(lfrdSourceDirectory, templateDirectory); err != nil {
+		// Check if directory exists and delete if it does
+		if _, err := os.Stat(targetDirectory); err == nil {
+			fmt.Printf("Directory %s already exists, deleting...\n", targetDirectory)
+			if err := os.RemoveAll(targetDirectory); err != nil {
+				fmt.Println("Error deleting existing directory:", err)
+				return
+			}
+		}
+
+		if err := helpers.CopyDir(templatesSourceDirectory, targetDirectory); err != nil {
 			fmt.Println("Error installing templates:", err)
 			return
 		}
 
-		fmt.Printf("Templates installed to %s\n", templateDirectory)
+		fmt.Printf("Templates installed to %s\n", targetDirectory)
 	},
 }
