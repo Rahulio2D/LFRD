@@ -22,6 +22,9 @@ func CopyDir(sourceLocation string, destinationLocation string) error {
 		targetPath := filepath.Join(destinationLocation, relPath)
 
 		if fileEntry.IsDir() {
+			if fileEntry.Name() == "docs" {
+				return filepath.SkipDir
+			}
 			return os.MkdirAll(targetPath, 0755)
 		}
 
@@ -29,7 +32,7 @@ func CopyDir(sourceLocation string, destinationLocation string) error {
 	})
 }
 
-func CopyFile(sourceLocation, destinationLocation string) error {
+func CopyFile(sourceLocation string, destinationLocation string) error {
 	in, err := os.Open(sourceLocation)
 	if err != nil {
 		return err
