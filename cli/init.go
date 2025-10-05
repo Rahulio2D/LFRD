@@ -1,4 +1,4 @@
-package cmd
+package cli
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var initCmd = &cobra.Command{
+var initCliCommand = &cobra.Command{
 	Use:   "init [name]",
 	Short: "Initialise a new LFRD website project",
 	Args:  cobra.ExactArgs(1),
