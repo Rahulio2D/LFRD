@@ -29,3 +29,8 @@ var buildCliCommand = &cobra.Command{
 		fmt.Println("✅ Site built successfully!")
 	},
 }
+
+// TODO: Right now all this does is copy the current directory to docs.
+// This needs to be expanded to actually process templates, markdown, etc.
+// Ideally it should first fill out templates in the HTML files
+// Then another update to convert markdown files to HTML (i.e. blog posts)
